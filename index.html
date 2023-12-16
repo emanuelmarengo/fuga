@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Cuotas</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: red;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, button {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+
+        #resultado {
+            font-weight: bold;
+            font-size: 18px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Logo vector.png" alt="Logo de la empresa" width="150">
+    </header>
+    <main>
+        <h1>Calculadora de Cuotas</h1>
+        <label for="precioContado">Precio de contado:</label>
+        <input type="number" id="precioContado" placeholder="Ingrese el precio de contado">
+
+        <label for="cuotas">Cantidad de cuotas:</label>
+        <input type="number" id="cuotas" placeholder="Ingrese la cantidad de cuotas">
+
+        <label for="interes">Interés de la tarjeta de crédito (%):</label>
+        <input type="number" id="interes" placeholder="Ingrese el interés">
+
+        <button onclick="calcularCuota()">Calcular Cuota</button>
+
+        <div id="resultado"></div>
+    </main>
+
+    <script>
+        function calcularCuota() {
+            var precioContado = parseFloat(document.getElementById('precioContado').value);
+            var cuotas = parseInt(document.getElementById('cuotas').value);
+            var interes = parseFloat(document.getElementById('interes').value);
+
+            if (isNaN(precioContado) || isNaN(cuotas) || isNaN(interes)) {
+                alert('Por favor, ingrese valores numéricos válidos.');
+                return;
+            }
+
+            var cuota = (precioContado * (1 + interes / 100)) / cuotas;
+            document.getElementById('resultado').innerText = 'Precio de la cuota: $' + cuota.toFixed(2);
+        }
+    </script>
+</body>
+</html>
